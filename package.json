@@ -1,0 +1,14 @@
+{
+  "name": "tradutor_projeto",
+  "version": "1.0.0",
+  "main": "api_flask.js",
+  "scripts": {
+    "dev": "python server.py"
+  
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
+
