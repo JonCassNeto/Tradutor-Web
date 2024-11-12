@@ -1,7 +1,13 @@
 from flask import Flask, request, jsonify, render_template, send_from_directory
 from googletrans import Translator
+from flask_cors import CORS
+from waitress import serve
 
+# Criando a aplicação Flask
 app = Flask(__name__)
+
+# Habilita CORS para permitir requisições de qualquer origem
+CORS(app)
 
 # Configurando o caminho para os templates
 app.template_folder = '.'  # Define o diretório de templates como a raiz do projeto
@@ -39,7 +45,6 @@ def translate():
     translated_text = translate_text(text, source_lang, target_lang)
     return jsonify({'translated_text': translated_text})
 
-
 def translate_text(text, source_lang, target_lang):
     translator = Translator()
     translation = translator.translate(text, src=source_lang, dest=target_lang)
@@ -49,11 +54,6 @@ def translate_text(text, source_lang, target_lang):
 def static_files(filename):
     return send_from_directory('.', filename)
 
+# Definindo a execução para o Waitress em vez do app.run(debug=True)
 if __name__ == '__main__':
-    app.run(debug=True)
-
-
-
-
-
-
+    serve(app, host='0.0.0.0', port=5000)
