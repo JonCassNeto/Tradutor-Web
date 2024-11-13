@@ -4,7 +4,7 @@ from flask_cors import CORS
 from waitress import serve
 
 # Criando a aplicação Flask
-app = Flask(__name__)
+app = Flask(__name__,)
 
 # Habilita CORS para permitir requisições de qualquer origem
 CORS(app)

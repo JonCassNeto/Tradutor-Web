@@ -1,10 +1,8 @@
-// Espera que o DOM (Document Object Model) esteja completamente carregado antes de executar a função.
 document.addEventListener("DOMContentLoaded", function() {
     // Adiciona um listener de evento ao botão de tradução que chama a função translateText quando clicado.
     document.getElementById('translateButton').addEventListener('click', translateText);
 });
 
-// Define a função translateText que será chamada quando o botão de tradução for clicado.
 function translateText() {
     // Obtém o texto inserido pelo usuário na área de texto com id 'inputText'.
     const inputText = document.getElementById('inputText').value;
@@ -12,6 +10,15 @@ function translateText() {
     const sourceLang = document.getElementById('sourceLang').value;
     // Obtém o valor do idioma de saída selecionado pelo usuário no seletor com id 'targetLang'.
     const targetLang = document.getElementById('targetLang').value;
+
+    // Verifica se todos os campos foram preenchidos.
+    if (!inputText || !sourceLang || !targetLang) {
+        alert("Por favor, preencha todos os campos.");
+        return;
+    }
+
+    // Adiciona um ícone de carregamento enquanto a tradução está sendo realizada (pode ser uma animação ou texto).
+    document.getElementById('outputText').value = "Traduzindo...";
 
     // Envia uma requisição HTTP POST para o endpoint '/translate'.
     fetch('/translate', {
@@ -39,5 +46,6 @@ function translateText() {
     .catch(error => {
         // Se ocorrer um erro durante a requisição, exibe o erro no console do navegador.
         console.error('Error:', error);
+        document.getElementById('outputText').value = "Erro na tradução. Tente novamente.";
     });
 }

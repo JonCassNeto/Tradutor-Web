@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tradutor</title>
+    <link rel="stylesheet" href="/style.e308ff8e.css">
+<script src="/style.e308ff8e.js"></script></head>
+<body>
+    <div class="container">
+        <h1>Tradutor</h1>
+        <img src="https://cdn-icons-png.flaticon.com/128/2014/2014826.png" alt="Logo" class="logo">
+        <div class="translator">
+            <div class="language-selector">
+                <label for="sourceLang" id="inputLabel">Idioma</label>
+                <select id="sourceLang">
+                    {% for lang in languages %}
+                        <option value="{{ lang.code }}">{{ lang.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <textarea id="inputText" placeholder="Digite o texto aqui..."></textarea>
+
+            <div class="action-container">
+                <div class="button-container">
+                    <button id="translateButton">Traduzir</button>
+                </div>
+            </div>
+
+            <div class="language-selector">
+                <label for="targetLang" id="outputLabel">Idioma</label>
+                <select id="targetLang">
+                    {% for lang in languages %}
+                        <option value="{{ lang.code }}">{{ lang.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <textarea id="outputText" placeholder="A tradução aparecerá aqui..." readonly=""></textarea>
+        </div>
+    </div>
+
+    <script src="/app.c328ef1a.js"></script>
+</body>
+</html>

@@ -3,12 +3,18 @@
   "version": "1.0.0",
   "main": "api_flask.js",
   "scripts": {
-    "dev": "python server.py"
-  
+    "dev": "python server.py",
+    "build": "parcel  index.html"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": ""
+  "description": "",
+  "devDependencies": {
+    "autoprefixer": "^9.8.8",
+    "cssnano": "^7.0.6",
+    "parcel-bundler": "^1.12.5",
+    "postcss": "^7.0.39",
+    "postcss-cli": "^11.0.0"
+  }
 }
-
